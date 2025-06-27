@@ -1,0 +1,16 @@
+{
+  "name": "uniswap-v3-subgraph",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --product hosted-service git-varun/uniswap-v3-subgraph-poc"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.97.1",
+    "@graphprotocol/graph-ts": "^0.38.1",
+    "assemblyscript": "^0.28.2"
+  },
+  "devDependencies": {
+    "matchstick-as": "^0.5.0"
+  }
+}

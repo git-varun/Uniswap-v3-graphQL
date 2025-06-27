@@ -1,0 +1,31 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+description: Uniswap V3 Subgraph (Arbitrum)
+dataSources:
+  - kind: ethereum/contract
+    name: UniswapV3Pool
+    network: arbitrum-one
+    source:
+      address: "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8"
+      abi: UniswapV3Pool
+      startBlock: 6900000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/mapping.ts
+      entities:
+        - Position
+        - Pool
+        - Token
+      abis:
+        - name: UniswapV3Pool
+          file: ./abis/UniswapV3Pool.json
+      eventHandlers:
+        - event: Mint(indexed address,indexed address,int24,int24,uint128,uint256,uint256)
+          handler: handleMint
+        - event: Burn(indexed address,indexed address,int24,int24,uint128,uint256,uint256)
+          handler: handleBurn
+        - event: Collect(indexed address,indexed address,int24,int24,uint128,uint128)
+          handler: handleCollect

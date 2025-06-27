@@ -1,0 +1,22 @@
+type Token @entity(immutable:true) {
+  id: ID!
+  symbol: String!
+  decimals: Int!
+}
+
+type Pool @entity(immutable:true) {
+  id: ID!
+  token0: Token!
+  token1: Token!
+  liquidity: BigInt!
+  sqrtPrice: BigInt!
+}
+
+type Position @entity(immutable:true) {
+  id: ID!
+  owner: Bytes!
+  pool: Pool!
+  liquidity: BigInt!
+  collectedFeesToken0: BigInt!
+  collectedFeesToken1: BigInt!
+}
